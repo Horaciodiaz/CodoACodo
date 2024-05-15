@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+*{
+    font-family: 'Ubuntu', serif;
+}
+
+:root {
+    --margen: 35px;
+}
+
+body, html{
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #1b1b1b;
+    width: 100%;
+    align-items: center;
+    padding: 10px 0;
+}
+
+ul{
+    margin: 0 !important;
+}
+
+li{
+    list-style: none;
+}
+
+h1{
+    margin: 0 0 0 var(--margen)!important;
+    color: #cecece;
+}
+
+.barra-menu{
+    margin-right: var(--margen);
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.barra-menu-list{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.barra-menu-list-item{
+    padding: 10px 15px;
+    background-color: #cecece;
+    border-radius: 10px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #1b1b1b;
+    transition: padding 0.2s;
+}
+
+.barra-menu-list-item:hover{
+    background-color: #f3f3f3;
+    color: #18aa92;
+    padding: 15px 25px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.carrusel{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.diapositiva{
+    aspect-ratio: 16 / 9;
+    border-radius: 0 0 10px 10px;
+}
+
+.mapa{
+    margin: 30px auto 0 auto;
+    text-align: center;
+    background-color: #1b1b1b;
+    padding: 9px 15px;
+    border-radius: 10px;
+    width: 1200px;
+}
+.mapa h2{
+    color:#cecece
+}
+
+iframe{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.producto{
+    padding: 15px;
+    width: 250px;
+    height: 350px;
+    border-radius: 10px;
+    color: #1b1b1b;
+    background-color: #cecece;
+    margin-bottom: 17px;
+}
+
+.producto img{
+    width: 100%;
+    border-radius: 10px;
+    aspect-ratio: 4 / 3;
+    object-fit:cover;
+}
+
+.productos{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 1200px;
+}
+
+.producto .boton{
+    padding: 10px 15px;
+    background-color: #53c3ba;
+    color: #f3f3f3;
+    border-radius: 10px;
+    text-decoration: none;
+    box-shadow: 3px 3px 3px #9a9a9a;
+    transition: padding 0.2s;
+}
+
+.producto .boton:hover{
+    padding: 15px 20px;
+}
+
+#productos-destacados, #productos{
+    margin: 30px auto;
+    background-color: #1b1b1b;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0 25px 0;
+    border-radius: 10px;
+}
+
+footer{
+    background-color: #1b1b1b;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}

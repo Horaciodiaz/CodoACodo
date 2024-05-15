@@ -1,0 +1,124 @@
+{
+    "productos": [
+        {
+            "id": 1,
+            "nombre": "Martillo",
+            "precio": 15.99,
+            "img": "assets/martillo.jpg"
+        },
+        {
+            "id": 2,
+            "nombre": "Destornillador",
+            "precio": 9.99,
+            "img": "assets/destornillador.jpg"
+        },
+        {
+            "id": 3,
+            "nombre": "Sierra",
+            "precio": 24.99,
+            "img": "assets/sierra.jpg"
+        },
+        {
+            "id": 4,
+            "nombre": "Taladro",
+            "precio": 39.99,
+            "img": "assets/taladro.jpg"
+        },
+        {
+            "id": 5,
+            "nombre": "Llave inglesa",
+            "precio": 8.49,
+            "img": "assets/llave_inglesa.webp"
+        },
+        {
+            "id": 6,
+            "nombre": "Pala",
+            "precio": 17.99,
+            "img": "assets/pala.jpeg"
+        },
+        {
+            "id": 7,
+            "nombre": "Alicate",
+            "precio": 12.99,
+            "img": "assets/alicate.webp"
+        },
+        {
+            "id": 8,
+            "nombre": "Cinta métrica",
+            "precio": 12.49,
+            "img": "assets/cinta_metrica.webp"
+        },
+        {
+            "id": 9,
+            "nombre": "Escalera",
+            "precio": 59.99,
+            "img": "assets/escalera.jpg"
+        },
+        {
+            "id": 10,
+            "nombre": "Llave de tubo",
+            "precio": 11.29,
+            "img": "assets/llave_tubo.jpg"
+        },
+        {
+            "id": 11,
+            "nombre": "Nivel",
+            "precio": 16.99,
+            "img": "assets/nivel.jpg"
+        },
+        {
+            "id": 12,
+            "nombre": "Cepillo de mano",
+            "precio": 7.99,
+            "img": "assets/cepillo_mano.jpg"
+        },
+        {
+            "id": 13,
+            "nombre": "Hacha",
+            "precio": 22.49,
+            "img": "assets/hacha.jpeg"
+        },
+        {
+            "id": 14,
+            "nombre": "Clavos (paquete de 100)",
+            "precio": 4.99,
+            "img": "assets/clavos.jpg"
+        },
+        {
+            "id": 15,
+            "nombre": "Gafas de seguridad",
+            "precio": 5.99,
+            "img": "assets/Gafas.webp"
+        },
+        {
+            "id": 16,
+            "nombre": "Brocas (set de 10)",
+            "precio": 14.99,
+            "img": "assets/Brocas.jpg"
+        },
+        {
+            "id": 17,
+            "nombre": "Nivelador de azulejos",
+            "precio": 9.49,
+            "img": "assets/nivelador_azulejos.webp"
+        },
+        {
+            "id": 18,
+            "nombre": "Guantes de trabajo",
+            "precio": 6.99,
+            "img": "assets/guantes_trabajo.webp"
+        },
+        {
+            "id": 19,
+            "nombre": "Destornillador eléctrico",
+            "precio": 29.99,
+            "img": "assets/destornillador_electrico.png"
+        },
+        {
+            "id": 20,
+            "nombre": "Caja de herramientas",
+            "precio": 34.99,
+            "img": "assets/caja_herramientas.jpeg"
+        }
+    ]
+}
