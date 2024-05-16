@@ -216,12 +216,15 @@ footer{
     }
     .carrusel{
         width: 100%;
+        border-radius: 0;
     }
     .mapa{
         width: 100%;
+        border-radius: 0;
     }
     #productos-destacados{
         width: 100%;
+        border-radius: 0;
     }
     .productos{
         width: 100%;
