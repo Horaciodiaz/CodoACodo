@@ -17,8 +17,8 @@ body, html{
 
 header{
     display: flex;
-    justify-content: space-between;
-    background-color: #1b1b1b;
+    justify-content: center;
+    background-color: #282B28;
     width: 100%;
     align-items: center;
     padding: 10px 0;
@@ -33,13 +33,12 @@ li{
 }
 
 h1{
-    margin: 0 0 0 var(--margen)!important;
-    color: #cecece;
+    margin-right: var(--margen)!important;
+    color: #fff;
 }
 
 .barra-menu{
-    margin-right: var(--margen);
-    width: 60%;
+    margin-left: var(--margen);
     display: flex;
     align-items: center;
 }
@@ -52,18 +51,18 @@ h1{
 
 .barra-menu-list-item{
     padding: 10px 15px;
-    background-color: #cecece;
+    background-color: #fff;
     border-radius: 10px;
     font-weight: bold;
     text-decoration: none;
-    color: #1b1b1b;
+    color: #282B28;
     transition: padding 0.2s;
     margin: 0 15px;
 }
 
 .barra-menu-list-item:hover{
     background-color: #f3f3f3;
-    color: #18aa92;
+    color: #D36135;
     padding: 15px 25px;
 }
 
@@ -86,13 +85,13 @@ main{
 .mapa{
     margin: 30px auto 0 auto;
     text-align: center;
-    background-color: #1b1b1b;
+    background-color: #282B28;
     padding: 9px 15px;
     border-radius: 10px;
     width: 1200px;
 }
 .mapa h2{
-    color:#cecece
+    color:#fff
 }
 
 iframe{
@@ -105,8 +104,8 @@ iframe{
     width: 250px;
     height: 350px;
     border-radius: 10px;
-    color: #1b1b1b;
-    background-color: #cecece;
+    color: #282B28;
+    background-color: #fff;
     margin-bottom: 17px;
 }
 
@@ -126,7 +125,7 @@ iframe{
 
 .producto .boton{
     padding: 10px 15px;
-    background-color: #53c3ba;
+    background-color: #D36135;
     color: #f3f3f3;
     border-radius: 10px;
     text-decoration: none;
@@ -140,7 +139,7 @@ iframe{
 
 #productos-destacados, #productos{
     margin: 30px auto;
-    background-color: #1b1b1b;
+    background-color: #282B28;
     color: #fff;
     text-align: center;
     height: auto;
@@ -149,7 +148,7 @@ iframe{
 }
 
 footer{
-    background-color: #1b1b1b;
+    background-color: #282B28;
     height: 50px;
     color: #fff;
     text-align: center;
@@ -165,7 +164,7 @@ footer{
         --margen: 2vw !important;
     }
     header{
-        padding: 1vw 0;
+        padding: 2.8vw 0;
         height: 4vw;
     }
     h1{
@@ -198,4 +197,41 @@ footer{
 
 @media (width < 500px){
     /* TODO agregar media para telefonos */
+    header{
+        flex-direction: column;
+        height: auto;
+    }
+    .barra-menu{
+        margin-left: 0;
+    }
+    h1{
+        font-size: 8vw !important;
+        margin-right: 0;
+    }
+    .barra-menu-list{
+        padding: 0;
+    }
+    .barra-menu-list-item{
+        font-size: 3vw !important;
+    }
+    .carrusel{
+        width: 100%;
+    }
+    .mapa{
+        width: 100%;
+    }
+    #productos-destacados{
+        width: 100%;
+    }
+    .productos{
+        width: 100%;
+    }
+    .producto{
+        width: 90%;
+        height: auto;
+        padding: 30px 0;
+    }
+    footer{
+        height: auto;
+    }
 }
