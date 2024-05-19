@@ -20,23 +20,56 @@
                 <li><a class="barra-menu-list-item" href="acerca.html"><i class="fa-solid fa-circle-info"></i> Acerca de Nosotros</a></li>
             </ul>
         </nav>
-    </header
-    <main>
-        <h2>Contacto</h2>
+    </header>
+    <main class="main-form">
         <form id="contactoForm" action="#" method="post">
-            <div>
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-            </div>
-            <div>
-                <label for="email">Correo electrónico:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="mensaje">Mensaje:</label>
-                <textarea id="mensaje" name="mensaje" required></textarea>
-            </div>
-            <button type="submit">Enviar</button>
+            <section class="form-registro">
+                <h4>Formulario de Contacto</h4>
+                <input class="control" type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
+                <input class="control" type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
+                <input class="control" type="email" id="email" name="email" placeholder="Ingrese su correo" required>
+                <input class="control" type="number" name="teleforno" id="teleforno" placeholder="Ingrese su telefono" required>
+                <input class="control" type="password" name="password" id="password" placeholder="Ingrese una contraseña" required>
+                <input class="control" type="password" name="repassword" id="repassword" placeholder="Repita la contraseña" required>
+                <section class="control">
+                    <input class="multi-opcion" type="radio" name="opcion" value="Masculino"> Masculino
+                    <input class="multi-opcion" type="radio" name="opcion" value="Femenino"> Femenino
+                    <input class="multi-opcion" type="radio" name="opcion" value="Otro">Otro
+                </section>
+                <select class="control" name="provincia" id="provincia" required>
+                    <option value="" disabled selected>Seleccione su provincia</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Catamarca">Catamarca</option>
+                    <option value="Chaco">Chaco</option>
+                    <option value="Chubut">Chubut</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Corrientes">Corrientes</option>
+                    <option value="Entre Ríos">Entre Ríos</option>
+                    <option value="Formosa">Formosa</option>
+                    <option value="Jujuy">Jujuy</option>
+                    <option value="La Pampa">La Pampa</option>
+                    <option value="La Rioja">La Rioja</option>
+                    <option value="Mendoza">Mendoza</option>
+                    <option value="Misiones">Misiones</option>
+                    <option value="Neuquén">Neuquén</option>
+                    <option value="Río Negro">Río Negro</option>
+                    <option value="Salta">Salta</option>
+                    <option value="San Juan">San Juan</option>
+                    <option value="San Luis">San Luis</option>
+                    <option value="Santa Cruz">Santa Cruz</option>
+                    <option value="Santa Fe">Santa Fe</option>
+                    <option value="Santiago del Estero">Santiago del Estero</option>
+                    <option value="Tierra del Fuego">Tierra del Fuego</option>
+                    <option value="Tucumán">Tucumán</option>
+                </select>
+                <fieldset class="control">
+                    <legend style="font-size: 17px;font-family: 'calibri'"">Subir documentación</legend>
+                    <input style="font-size: 14px;" type="file" name="file" id="file" required>
+                </fieldset>
+                <textarea class="control" id="mensaje" name="mensaje" placeholder="Ingrese un mensaje" required></textarea>
+                <button class="boton" type="submit">Enviar</button>
+                <button class="boton" type="reset">Cancelar</button>
+            </section>
         </form>
     </main>
     <footer>
