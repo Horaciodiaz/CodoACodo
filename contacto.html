@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="./static/img/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ferretería Online - Contacto</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/9e327c5691.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -11,6 +12,8 @@
 </head>
 <body>
     <header>
+        <a href="./">
+            <img src="./static/img/logo.png" alt="" class="logo-tools" ></a>
         <h1>Ferretería Online</h1>
         <nav class="barra-menu">
             <ul class="barra-menu-list">
@@ -22,21 +25,25 @@
         </nav>
     </header>
     <main class="main-form">
-        <form id="contactoForm" action="#" method="post">
+        <form id="contactoForm">
             <section class="form-registro">
+                <div class='requisitos' id="requisitos">
+                    <p class="tituloRequisitos">Requisitos para Registrarse</p>
+                    <p class="subparrafosRequisitos">* La contraseña tiene que tener 8 caracteres.</p>
+                </div>
                 <h4>Formulario de Contacto</h4>
-                <input class="control" type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
-                <input class="control" type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido" required>
-                <input class="control" type="email" id="email" name="email" placeholder="Ingrese su correo" required>
-                <input class="control" type="number" name="teleforno" id="teleforno" placeholder="Ingrese su telefono" required>
-                <input class="control" type="password" name="password" id="password" placeholder="Ingrese una contraseña" required>
-                <input class="control" type="password" name="repassword" id="repassword" placeholder="Repita la contraseña" required>
+                <input class="control" type="text" id="nombre" name="nombre" placeholder="Ingrese su nombre">
+                <input class="control" type="text" id="apellido" name="apellido" placeholder="Ingrese su apellido">
+                <input class="control" type="email" id="email" name="email" placeholder="Ingrese su correo">
+                <input class="control" type="number" name="telefono" id="telefono" placeholder="Ingrese su telefono">
+                <input class="control" type="password" name="password" id="password" placeholder="Ingrese una contraseña">
+                <input class="control" type="password" name="repassword" id="repassword" placeholder="Repita la contraseña">
                 <section class="control">
                     <input class="multi-opcion" type="radio" name="opcion" value="Masculino"> Masculino
                     <input class="multi-opcion" type="radio" name="opcion" value="Femenino"> Femenino
                     <input class="multi-opcion" type="radio" name="opcion" value="Otro">Otro
                 </section>
-                <select class="control" name="provincia" id="provincia" required>
+                <select class="control" name="provincia" id="provincia">
                     <option value="" disabled selected>Seleccione su provincia</option>
                     <option value="Buenos Aires">Buenos Aires</option>
                     <option value="Catamarca">Catamarca</option>
@@ -63,17 +70,54 @@
                     <option value="Tucumán">Tucumán</option>
                 </select>
                 <fieldset class="control">
-                    <legend style="font-size: 17px;font-family: 'calibri'"">Subir documentación</legend>
-                    <input style="font-size: 14px;" type="file" name="file" id="file" required>
+                    <legend style="font-size: 17px;font-family: 'calibri'">Subir documentación</legend>
+                    <input style="font-size: 14px;" type="file" name="file" id="file">
                 </fieldset>
-                <textarea class="control" id="mensaje" name="mensaje" placeholder="Ingrese un mensaje" required></textarea>
-                <button class="boton" type="submit">Enviar</button>
+                <textarea class="control" id="mensaje" name="mensaje" placeholder="Ingrese un mensaje"></textarea>
+                <button class="boton" id="submitButton" type="submit">Enviar</button>
                 <button class="boton" type="reset">Cancelar</button>
+                
             </section>
         </form>
     </main>
     <footer>
-        <p>&copy; 2024 Ferretería Online. Todos los derechos reservados.</p>
+        <p>&copy; <span id="año">año</span> Ferretería Online. Todos los derechos reservados.</p>
     </footer>
+
+    
+    <script src="script.js"></script>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Tienda</h3>
+                <ul>
+                    <li><a href="./">Inicio</a></li>
+                    <li><a href="./acerca.html">Acerca de nosotros</a></li>
+                    <li><a href="./productos.html">Productos</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Redes Sociales</h3>
+                <ul class="social-icons">
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contacto</h3>
+                <p>Dirección: Calle Principal, Ciudad, País</p>
+                <p>Teléfono: +123456789</p>
+                <p>Email: info@example.com</p>
+            </div>
+        </div>
+      
+    </footer>
+
+     <!-- TERMINA FOOTER -->
 </body>
+
 </html>

@@ -26,10 +26,10 @@ header {
     background: #16222A;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
     width: 100%;
     align-items: center;
     padding: 10px 0;
+
 }
 
 ul {
@@ -41,7 +41,8 @@ li {
 }
 
 h1 {
-    margin-right: var(--margen) !important;
+    
+    /* margin-right: var(--margen) !important; */
     color: #fff;
 }
 
@@ -164,18 +165,50 @@ background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, F
 }
 
 footer {
-        background: #16222A;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #3A6073, #16222A);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    height: 50px;
+    background: #16222A; 
+    background: -webkit-linear-gradient(to right, #3A6073, #16222A); 
+    background: linear-gradient(to right, #3A6073, #16222A); 
     color: #fff;
     text-align: center;
     padding: 15px;
     /* margin: 6em; */
+
+
 }
 
 
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column ul {
+    padding: 0;
+
+}
+
+.footer-column a {
+    color:white;
+    
+}
+.footer-column {
+    margin: 0 auto;
+    flex: 1;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.footer-column:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+    .footer-column {
+        flex-basis: 100%;
+        margin-right: 0;
+    }
+}
 
 
 /* MEDIA QUERYS */
@@ -184,12 +217,20 @@ background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, F
     :root {
         --margen: 2vw !important;
     }
-
     header {
-        padding: 2.8vw 0;
-        height: 4vw;
+        flex-direction: column;
+        height: auto;
     }
 
+    .barra-menu {
+        height: 100%;
+
+        margin-left: 0;
+    }
+    
+    .barra-menu-list {
+        padding: 0;
+    }    
     h1 {
         font-size: 3vw !important;
     }
@@ -226,7 +267,13 @@ background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, F
 }
 
 @media (width < 500px) {
-
+    .main-form{
+        width: 100%;
+    }
+    .form-registro{
+        padding: 5px !important ;
+        width: 98% !important ;
+    }
     /* TODO agregar media para telefonos */
     header {
         flex-direction: column;
@@ -362,3 +409,53 @@ background: linear-gradient(to right, #3A6073, #16222A); /* W3C, IE 10+/ Edge, F
     text-align: start;
     padding: 13px;
 }
+
+
+.requisitos{
+    margin: 0 auto;
+    border-color: white;
+    border: 1px solid #1f53c5;
+    border-radius: 4px;
+    width: 90%;
+    height: 40%;
+    background: #24303c;
+    padding: 9px;
+    display:none;
+    opacity: 1;
+    visibility: visible;
+    animation: fadeOut 10s ease forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.requisitos, .tituloRequisitos{
+
+    justify-content: left;
+    color: red;
+    font-size: 16px;
+    
+}
+
+.requisitos p{
+    display: flex;
+    font-family: 'calibri';
+    justify-content: left;
+    color: white;
+    font-size: 18px;
+    
+}
+
+.logo-tools {
+    height:50px;
+    width:50px;
+    margin-right: 5px;
+}
+
