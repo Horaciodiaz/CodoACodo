@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Producto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="./">
+            <img src="./static/img/logo.png" alt="" class="logo-tools"></a>
+        <h1>Ferretería Online</h1>
+        <nav class="barra-menu">
+            <ul class="barra-menu-list">
+                <li><a class="barra-menu-list-item" href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                <li><a class="barra-menu-list-item" href="productos.html"><i class="fa-solid fa-box-open"></i>
+                        Productos</a></li>
+                <li><a class="barra-menu-list-item" href="contacto.html"><i class="fa-solid fa-address-card"></i>
+                        Contacto</a></li>
+                
+                <li><a class="barra-menu-list-item" href="admin.html"><i class="fa-solid fa-gears"></i> Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div id="producto-detalle">
+            <h2 id="nombre"></h2>
+            <img id="imagen" src="" alt="">
+            <p id="precio"></p>
+            <p id="descripcion"></p>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productoId = urlParams.get('id');
+
+            if (productoId) {
+                fetch(`http://127.0.0.1:5000/productos/${productoId}`)
+                    .then(response => response.json())
+                    .then(producto => {
+                        document.getElementById('nombre').innerText = producto.nombre;
+                        document.getElementById('imagen').src = `./static/images/${producto.imagen_url}`;
+                        document.getElementById('precio').innerText = `Precio: $${producto.precio}`;
+                        document.getElementById('descripcion').innerText = producto.descripcion || 'Descripción no disponible.';
+                    })
+                    .catch(error => console.error('Error al cargar los detalles del producto:', error));
+            } else {
+                console.error('ID del producto no proporcionado en la URL.');
+            }
+        });
+    </script>
+</body>
+</html>

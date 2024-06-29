@@ -1,52 +1,75 @@
 document.addEventListener("DOMContentLoaded", function() {
-
+    console.log("DOM completamente cargado y analizado.");
     document.getElementById("año").innerText = new Date().getFullYear();
+    
     let productos = [];
     let productosDestacados = [];
     let tarjetaProducto = document.querySelector('#productos .productos');
     let tarjetaProductoDestacado = document.querySelector('#productos-destacados .productos');
 
-    const obtenerProductos = () => {
-        fetch("productos.json")
-            .then(res => res.json())
-            .then(data => {
-                productos = [...data.productos];
-                let index = [];
-                for(let i = 0; i < 3; i++) {
-                    index.push(Math.floor(Math.random() * data.productos.length));
-                }
-                productosDestacados = index.map(i => productos[i]);
-                if(!tarjetaProducto){
-                    productosDestacados.map(producto => {
-                        console.log(tarjetaProductoDestacado)
-                        tarjetaProductoDestacado.innerHTML += `
-                        <div class="producto">
-                                <img src="${producto.img}" alt="${producto.nombre}">
-                                <h3>${producto.nombre}</h3>
-                                <p>Precio: $${producto.precio}</p>
-                                <a href="#" class="boton">Ver detalles</a>
-                            </div>
-                        `;
-                    });
-                }
-                else{
-                    productos.map(producto => {
-                        tarjetaProducto.innerHTML += `
-                            <div class="producto">
-                                <img src="${producto.img}" alt="${producto.nombre}">
-                                <h3>${producto.nombre}</h3>
-                                <p>Precio: $${producto.precio}</p>
-                                <a href="#" class="boton">Ver detalles</a>
-                            </div>
-                        `;
-                    });
-                }
+    console.log("Elementos del DOM:", {
+        tarjetaProducto,
+        tarjetaProductoDestacado
+    });
 
-            })
-            .catch(error => console.log("Hubo un error",error));
+    const obtenerProductos = async () => {
+        try {
+            const response = await fetch("http://127.0.0.1:5000/productos");
+            if (!response.ok) {
+                throw new Error(`Error en la respuesta: ${response.status}`);
+            }
+            const data = await response.json();
+            console.log("Datos obtenidos:", data);
+
+            productos = [...data];
+            console.log("Productos:", productos);
+
+            // Obtener 3 índices únicos
+            let indexSet = new Set();
+            while (indexSet.size < 3) {
+                indexSet.add(Math.floor(Math.random() * productos.length));
+            }
+            let indices = Array.from(indexSet);
+            productosDestacados = indices.map(i => productos[i]);
+            console.log("Productos destacados:", productosDestacados);
+            
+            if (tarjetaProductoDestacado) {
+                productosDestacados.forEach(producto => {
+                    tarjetaProductoDestacado.innerHTML += `
+                        <div class="producto">
+                            <img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}">
+                            <h3>${producto.nombre}</h3>
+                            <p>Precio: $${producto.precio}</p>
+                            <a href="producto.html?id=${producto.id}" class="boton">Ver detalles</a>
+                        </div>
+                    `;
+                });
+            } else {
+                console.log("tarjetaProductoDestacado no encontrado");
+            }
+
+            if (tarjetaProducto) {
+                productos.forEach(producto => {
+                    tarjetaProducto.innerHTML += `
+                        <div class="producto">
+                            <img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}">
+                            <h3>${producto.nombre}</h3>
+                            <p>Precio: $${producto.precio}</p>
+                            <a href="producto.html?id=${producto.id}" class="boton">Ver detalles</a>
+                        </div>
+                    `;
+                });
+            } else {
+                console.log("tarjetaProducto no encontrado");
+            }
+        } catch (error) {
+            console.log("Hubo un error", error);
+        }
     }
+
     obtenerProductos();
 });
+
 
 
 

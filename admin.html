@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferretería Online - Administración</title>
+    <link rel="shortcut icon" href="./static/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/9e327c5691.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header>
+        <a href="./">
+            <img src="./static/img/logo.png" alt="" class="logo-tools"></a>
+        <h1>Ferretería Online</h1>
+        <nav class="barra-menu">
+            <ul class="barra-menu-list">
+                <li><a class="barra-menu-list-item" href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+                <li><a class="barra-menu-list-item" href="productos.html"><i class="fa-solid fa-box-open"></i>
+                        Productos</a></li>
+                <li><a class="barra-menu-list-item" href="contacto.html"><i class="fa-solid fa-address-card"></i>
+                        Contacto</a></li>
+                
+                <li><a class="barra-menu-list-item" href="admin.html"><i class="fa-solid fa-gears"></i> Admin</a></li>
+            </ul>
+
+        </nav>
+    </header>
+
+    <main>
+        <div class="admin">
+            <h2>Administración Ferretería</h2><br>
+            <ul class="admin-options">
+                <li class="admin-option" id="agregarProducto">Agregar un producto <i class="fa-solid fa-plus"></i></li>
+                <li class="admin-option" id="verProductos">Ver productos <i class="fa-solid fa-boxes-stacked"></i></li>
+            </ul>
+        </div>
+        <dialog id="modalAgregarProducto">
+            <div>
+                <button id="cerrarModalAgregarProducto">&times;</button>
+                <h2>Agregar Producto</h2>
+                <form id="formularioProducto">
+                    <!-- Aquí van los campos del formulario -->
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="precio">Precio:</label>
+                    <input type="number" id="precio" name="precio" required>
+
+                    <label for="image">imagen:</label>
+                    <input type="file" name="image" id="image">
+
+                    <button type="submit">Agregar</button>
+                </form>
+            </div>
+        </dialog>
+        <dialog id="modalProductos">
+            <div style="position: relative;">
+                <button id="cerrarModalProductos">&times;</button>
+                <h2>Lista de Productos</h2>
+                <table id="tablaProductos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Imagen</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Aquí se agregarán filas dinámicamente con JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </dialog>
+        <dialog id="modalEditarProducto">
+            <div>
+                <button id="cerrarModalEditarProducto">&times;</button>
+                <h2>Editar Producto</h2>
+                <form id="formularioEditarProducto">
+                    <input type="hidden" id="editarId" name="id">
+                    <label for="editarNombre">Nombre:</label>
+                    <input type="text" id="editarNombre" name="nombre" required>
+
+                    <label for="editarPrecio">Precio:</label>
+                    <input type="number" id="editarPrecio" name="precio" required>
+
+                    <label for="editarImagen">Imagen:</label>
+                    <input type="file" id="editarImagen" name="imagen">
+
+                    <button type="submit">Actualizar</button>
+                </form>
+            </div>
+        </dialog>
+
+    </main>
+
+    <script>
+        const URL = "http://127.0.0.1:5000";
+        const btnAgregarProducto = document.getElementById("agregarProducto");
+        const dialogAgregarProducto = document.getElementById("modalAgregarProducto");
+        const btnCerrarModal = document.getElementById("cerrarModalAgregarProducto");
+        const ulAdminOptions = document.querySelector(".admin");
+
+        // Abrir modal de agregar producto
+        btnAgregarProducto.addEventListener("click", function () {
+            dialogAgregarProducto.showModal();
+            ulAdminOptions.style.display = "none";
+        });
+
+        // Cerrar modal de agregar producto
+        btnCerrarModal.addEventListener("click", function () {
+            dialogAgregarProducto.close();
+            ulAdminOptions.style.display = "flex";
+        });
+
+        // Event listener para el formulario de agregar producto
+        const formularioProducto = document.getElementById("formularioProducto");
+        formularioProducto.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let formData = new FormData(this);
+
+            fetch(URL + '/productos', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('Error al agregar el producto.');
+                    }
+                })
+                .then(data => {
+                    alert('Producto agregado correctamente.');
+                    cargarProductosEnTabla(); // Actualizar la tabla después de agregar el producto
+                })
+                .catch(error => {
+                    console.error('Error al agregar el producto:', error);
+                    alert('Error al agregar el producto.');
+                })
+                .finally(() => {
+                    // Limpiar campos del formulario
+                    formularioProducto.reset();
+                    dialogAgregarProducto.close();
+                    ulAdminOptions.style.display = "flex";
+                });
+        });
+
+        // Mostrar productos al hacer clic en "Ver productos"
+        const btnVerProductos = document.getElementById("verProductos");
+        const dialogProductos = document.getElementById("modalProductos");
+        const btnCerrarModalProductos = document.getElementById("cerrarModalProductos");
+
+        btnVerProductos.addEventListener("click", function () {
+            dialogProductos.showModal();
+            cargarProductosEnTabla();
+            ulAdminOptions.style.display = "none";
+        });
+
+        // Cerrar modal de productos
+        btnCerrarModalProductos.addEventListener("click", function () {
+            dialogProductos.close();
+            ulAdminOptions.style.display = "flex";
+        });
+
+        // Función para cargar productos en la tabla
+        async function cargarProductosEnTabla() {
+            const tbody = document.querySelector("#tablaProductos tbody");
+
+            try {
+                const response = await fetch(URL + "/productos");
+                if (!response.ok) {
+                    throw new Error(`Error en la respuesta: ${response.status}`);
+                }
+                const productos = await response.json();
+
+                // Limpiar contenido previo de la tabla
+                tbody.innerHTML = "";
+
+                // Iterar sobre los productos y agregar filas a la tabla
+                productos.forEach(producto => {
+                    const tr = document.createElement("tr");
+                    tr.innerHTML = `
+                        <td>${producto.id}</td>
+                        <td>${producto.nombre}</td>
+                        <td>$ ${producto.precio}</td>
+                        <td><img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}"></td>
+                        <td class="acciones">
+                            <button class="editar" data-producto='${JSON.stringify(producto)}'>Editar</button>
+                            <button class="eliminar" data-id="${producto.id}">Eliminar</button>
+                        </td>`;
+                    tbody.appendChild(tr);
+
+                    // Agregar evento para el botón de editar
+                    tr.querySelector(".editar").addEventListener("click", function () {
+                        abrirModalEditar(producto);
+                    });
+
+                    // Agregar evento para el botón de eliminar
+                    tr.querySelector(".eliminar").addEventListener("click", function () {
+                        abrirModalEliminar(producto.id);
+                    });
+                });
+            } catch (error) {
+                console.error("Hubo un error:", error);
+            }
+        }
+
+        function abrirModalEliminar(id) {
+            if (confirm("¿Estás seguro de que quieres eliminar este producto?")) {
+                fetch(`${URL}/productos/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al eliminar el producto.');
+                        }
+                        alert('Producto eliminado correctamente.');
+                        cargarProductosEnTabla(); // Actualizar la tabla después de eliminar el producto
+                    })
+                    .catch(error => {
+                        console.error('Error al eliminar el producto:', error);
+                        alert('Error al eliminar el producto.');
+                    });
+            }
+        }
+
+        // Función para abrir modal de editar producto
+        function abrirModalEditar(producto) {
+            const modalEditar = document.getElementById("modalEditarProducto");
+            const formularioEditar = document.getElementById("formularioEditarProducto");
+
+            // Rellenar formulario con datos del producto seleccionado
+            formularioEditar.elements["id"].value = producto.id;
+            formularioEditar.elements["nombre"].value = producto.nombre;
+            formularioEditar.elements["precio"].value = producto.precio;
+
+            // Mostrar modal de editar producto
+            modalEditar.showModal();
+            dialogProductos.close();
+
+            // Event listener para el formulario de editar producto
+            formularioEditar.addEventListener("submit", async function (event) {
+                event.preventDefault();
+
+                let formData = new FormData(this);
+
+                try {
+                    const response = await fetch(`${URL}/productos/${producto.id}`, {
+                        method: 'PUT',
+                        body: formData
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Error al actualizar el producto.');
+                    }
+
+                    alert('Producto actualizado correctamente.');
+                    modalEditar.close();
+                    dialogProductos.showModal();
+                    cargarProductosEnTabla(); // Actualizar la tabla después de editar el producto
+                } catch (error) {
+                    console.error('Error al actualizar el producto:', error);
+                    alert('Error al actualizar el producto.');
+                    dialogProductos.showModal();
+                }
+            });
+        }
+
+        // Event listener para cerrar el modal de editar producto
+        document.getElementById("cerrarModalEditarProducto").addEventListener("click", function () {
+            document.getElementById("modalEditarProducto").close();
+            dialogProductos.showModal();
+        });
+
+    </script>
+</body>
+
+</html>
