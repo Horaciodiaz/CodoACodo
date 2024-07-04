@@ -301,6 +301,31 @@ dialog #cerrarModalAgregarProducto {
     justify-content: space-around;
 }
 
+#producto-detalle{
+    display: grid;
+    grid-template-areas:
+        "imagen titulo"
+        "imagen precio"
+        "imagen ...";
+    width: 800px;
+    margin: 20px auto;
+    color: #fff;
+    padding: 15px 20px;
+    background-color: #243b55;
+    border-radius: 10px;
+}
+#producto-detalle #nombre{
+    grid-area: titulo;
+    font-size: 35px;
+}
+#producto-detalle #imagen{
+    grid-area: imagen;
+    border-radius: 10px;
+}
+#producto-detalle #precio{
+    grid-area: precio;
+}
+
 @media screen and (max-width: 768px) {
     .footer-column {
         flex-basis: 100%;

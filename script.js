@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const URL = "https://paradaice.pythonanywhere.com/"
     console.log("DOM completamente cargado y analizado.");
     document.getElementById("año").innerText = new Date().getFullYear();
     
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const obtenerProductos = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:5000/productos");
+            const response = await fetch(URL + "/productos");
             if (!response.ok) {
                 throw new Error(`Error en la respuesta: ${response.status}`);
             }
@@ -37,7 +38,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 productosDestacados.forEach(producto => {
                     tarjetaProductoDestacado.innerHTML += `
                         <div class="producto">
-                            <img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}">
+                        
+                            <img src="https://www.pythonanywhere.com/user/paradaice/files/home/paradaice/mysite/static/images/${producto.imagen_url}" alt="${producto.nombre}">
                             <h3>${producto.nombre}</h3>
                             <p>Precio: $${producto.precio}</p>
                             <a href="producto.html?id=${producto.id}" class="boton">Ver detalles</a>
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 productos.forEach(producto => {
                     tarjetaProducto.innerHTML += `
                         <div class="producto">
-                            <img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}">
+                            <img src="https://www.pythonanywhere.com/user/paradaice/files/home/paradaice/mysite/static/images/${producto.imagen_url}" alt="${producto.nombre}">
                             <h3>${producto.nombre}</h3>
                             <p>Precio: $${producto.precio}</p>
                             <a href="producto.html?id=${producto.id}" class="boton">Ver detalles</a>

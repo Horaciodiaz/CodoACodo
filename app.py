@@ -73,9 +73,12 @@ class Catalogo:
         self.conn.commit()
         return self.cursor.rowcount > 0
 
-catalogo = Catalogo('localhost', 'root', '', 'ferreteria')
+# catalogo = Catalogo('localhost', 'root', '', 'ferreteria')
+catalogo = Catalogo('paradaice.mysql.pythonanywhere-services.com', 'paradaice', 'root-codoacodo', 'paradaice$ferreteria')
+#catalogo = Catalogo(host='florcodo1.mysql.pythonanywhere-services.com', user='FlorCodo1', password='root-123456', database='FlorCodo1$miapp')
 
-ruta_destino = './static/images/'
+# ruta_destino = './static/images/'
+ruta_destino = '/home/paradaice/mysite/static/images/'
 
 @app.route("/productos", methods=["GET"])
 def listar_productos():

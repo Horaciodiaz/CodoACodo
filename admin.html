@@ -18,19 +18,16 @@
 <body>
     <header>
         <a href="./">
-            <img src="./static/img/logo.png" alt="" class="logo-tools"></a>
+        <img src="./static/img/logo.png" alt="" class="logo-tools" ></a>
         <h1>Ferretería Online</h1>
         <nav class="barra-menu">
             <ul class="barra-menu-list">
                 <li><a class="barra-menu-list-item" href="index.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
-                <li><a class="barra-menu-list-item" href="productos.html"><i class="fa-solid fa-box-open"></i>
-                        Productos</a></li>
-                <li><a class="barra-menu-list-item" href="contacto.html"><i class="fa-solid fa-address-card"></i>
-                        Contacto</a></li>
-                
+                <li><a class="barra-menu-list-item" href="productos.html"><i class="fa-solid fa-box-open"></i> Productos</a></li>
+                <li><a class="barra-menu-list-item" href="contacto.html"><i class="fa-solid fa-address-card"></i> Contacto</a></li>
                 <li><a class="barra-menu-list-item" href="admin.html"><i class="fa-solid fa-gears"></i> Admin</a></li>
             </ul>
-
+        
         </nav>
     </header>
 
@@ -93,8 +90,8 @@
                     <label for="editarPrecio">Precio:</label>
                     <input type="number" id="editarPrecio" name="precio" required>
 
-                    <label for="editarImagen">Imagen:</label>
-                    <input type="file" id="editarImagen" name="imagen">
+                    <label for="image">imagen:</label>
+                    <input type="file" name="image" id="image">
 
                     <button type="submit">Actualizar</button>
                 </form>
@@ -104,7 +101,7 @@
     </main>
 
     <script>
-        const URL = "http://127.0.0.1:5000";
+        const URL = "https://paradaice.pythonanywhere.com";
         const btnAgregarProducto = document.getElementById("agregarProducto");
         const dialogAgregarProducto = document.getElementById("modalAgregarProducto");
         const btnCerrarModal = document.getElementById("cerrarModalAgregarProducto");
@@ -194,7 +191,7 @@
                         <td>${producto.id}</td>
                         <td>${producto.nombre}</td>
                         <td>$ ${producto.precio}</td>
-                        <td><img src="./static/images/${producto.imagen_url}" alt="${producto.nombre}"></td>
+                        <td><img src="https://www.pythonanywhere.com/user/paradaice/files/home/paradaice/mysite/static/images/${producto.imagen_url}" alt="${producto.nombre}"></td>
                         <td class="acciones">
                             <button class="editar" data-producto='${JSON.stringify(producto)}'>Editar</button>
                             <button class="eliminar" data-id="${producto.id}">Eliminar</button>
