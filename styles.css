@@ -321,6 +321,8 @@ dialog #cerrarModalAgregarProducto {
 #producto-detalle #imagen{
     grid-area: imagen;
     border-radius: 10px;
+    aspect-ratio: 1;
+    width: 500px;
 }
 #producto-detalle #precio{
     grid-area: precio;
